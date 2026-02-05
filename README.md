@@ -1,6 +1,6 @@
 # PassLocal
 
-A minimal, Apple-inspired local password manager for macOS. Store your secrets securely with AES-256 encryption.
+A minimal, local password manager for macOS. Store your secrets securely with AES-256 encryption.
 
 ## Features
 
