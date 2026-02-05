@@ -16,13 +16,13 @@ A minimal, Apple-inspired local password manager for macOS. Store your secrets s
 ### Via Homebrew
 
 ```bash
-brew tap kirananil007/passlocal
+brew tap kirananil007/homebrew-passlocal
 brew install --cask passlocal
 ```
 
 ### Manual Installation
 
-1. Download the DMG from [GitHub Releases](https://github.com/kirananil007/passlocal/releases)
+1. Download the DMG from [GitHub Releases](https://github.com/kirananil007/homebrew-passlocal/releases)
 2. Open the DMG and drag PassLocal to Applications
 3. Launch PassLocal from Applications
 

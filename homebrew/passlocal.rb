@@ -2,11 +2,11 @@ cask "passlocal" do
   version "1.0.0"
   sha256 "3a44a09229c1d238346d249e99e4c952bb364293e0796b6eb7aa1705a29a1563"
 
-  url "https://github.com/kirananil007/passlocal/releases/download/v#{version}/PassLocal_#{version}_aarch64.dmg"
+  url "https://github.com/kirananil007/homebrew-passlocal/releases/download/v#{version}/PassLocal_#{version}_aarch64.dmg"
 
   name "PassLocal"
   desc "Local password manager for macOS with AES-256 encryption"
-  homepage "https://github.com/kirananil007/passlocal"
+  homepage "https://github.com/kirananil007/homebrew-passlocal"
 
   app "PassLocal.app"
 
