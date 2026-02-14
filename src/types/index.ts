@@ -1,6 +1,7 @@
 export interface Secret {
   id: string;
   name: string;
+  key: string;
   value: string;
   folder_id: string;
   created_at: string;

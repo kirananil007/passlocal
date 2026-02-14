@@ -46,6 +46,11 @@ export function SecretCard({ secret, onEdit, onDelete }: SecretCardProps) {
           <h3 className="font-medium text-gray-900 dark:text-white truncate">
             {secret.name}
           </h3>
+          {secret.key && (
+            <p className="mt-1 text-xs font-mono text-gray-500 dark:text-gray-400 truncate">
+              {secret.key}
+            </p>
+          )}
           <div className="mt-2 flex items-center gap-2">
             <code className="flex-1 text-sm font-mono text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-900/50 px-3 py-1.5 rounded-lg truncate">
               {showValue ? secret.value : maskedValue}

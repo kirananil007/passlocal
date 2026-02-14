@@ -213,6 +213,7 @@ pub fn delete_folder(id: String, state: tauri::State<AppState>) -> Result<(), Co
 #[tauri::command]
 pub fn add_secret(
     name: String,
+    key: String,
     value: String,
     folder_id: String,
     state: tauri::State<AppState>,
@@ -233,6 +234,7 @@ pub fn add_secret(
     let secret = Secret {
         id: Uuid::new_v4().to_string(),
         name,
+        key,
         value,
         folder_id,
         created_at: now,
@@ -256,6 +258,7 @@ pub fn add_secret(
 pub fn update_secret(
     id: String,
     name: String,
+    key: String,
     value: String,
     folder_id: String,
     state: tauri::State<AppState>,
@@ -274,6 +277,7 @@ pub fn update_secret(
         })?;
 
     secret.name = name;
+    secret.key = key;
     secret.value = value;
     secret.folder_id = folder_id;
     secret.updated_at = Utc::now();

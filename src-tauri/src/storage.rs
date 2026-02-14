@@ -27,6 +27,8 @@ pub enum StorageError {
 pub struct Secret {
     pub id: String,
     pub name: String,
+    #[serde(default)]
+    pub key: String,
     pub value: String,
     pub folder_id: String,
     pub created_at: DateTime<Utc>,

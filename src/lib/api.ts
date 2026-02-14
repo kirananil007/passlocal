@@ -34,12 +34,12 @@ export async function deleteFolder(id: string): Promise<void> {
   return invoke('delete_folder', { id });
 }
 
-export async function addSecret(name: string, value: string, folderId: string): Promise<Secret> {
-  return invoke('add_secret', { name, value, folderId });
+export async function addSecret(name: string, key: string, value: string, folderId: string): Promise<Secret> {
+  return invoke('add_secret', { name, key, value, folderId });
 }
 
-export async function updateSecret(id: string, name: string, value: string, folderId: string): Promise<Secret> {
-  return invoke('update_secret', { id, name, value, folderId });
+export async function updateSecret(id: string, name: string, key: string, value: string, folderId: string): Promise<Secret> {
+  return invoke('update_secret', { id, name, key, value, folderId });
 }
 
 export async function deleteSecret(id: string): Promise<void> {

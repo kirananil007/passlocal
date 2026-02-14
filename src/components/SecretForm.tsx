@@ -5,7 +5,7 @@ import type { Secret, Folder } from '../types';
 interface SecretFormProps {
   isOpen: boolean;
   onClose: () => void;
-  onSubmit: (name: string, value: string, folderId: string) => Promise<void>;
+  onSubmit: (name: string, key: string, value: string, folderId: string) => Promise<void>;
   folders: Folder[];
   currentFolderId: string;
   secret?: Secret | null;
@@ -20,6 +20,7 @@ export function SecretForm({
   secret,
 }: SecretFormProps) {
   const [name, setName] = useState('');
+  const [key, setKey] = useState('');
   const [value, setValue] = useState('');
   const [folderId, setFolderId] = useState(currentFolderId);
   const [showValue, setShowValue] = useState(false);
@@ -32,10 +33,12 @@ export function SecretForm({
     if (isOpen) {
       if (secret) {
         setName(secret.name);
+        setKey(secret.key || '');
         setValue(secret.value);
         setFolderId(secret.folder_id);
       } else {
         setName('');
+        setKey('');
         setValue('');
         setFolderId(currentFolderId);
       }
@@ -60,7 +63,7 @@ export function SecretForm({
 
     setLoading(true);
     try {
-      await onSubmit(name.trim(), value, folderId);
+      await onSubmit(name.trim(), key.trim(), value, folderId);
       onClose();
     } catch (err: unknown) {
       const error = err as { message?: string };
@@ -89,6 +92,20 @@ export function SecretForm({
             className="w-full px-4 py-2.5 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all outline-none"
             placeholder="e.g., GitHub Token"
             autoFocus
+          />
+        </div>
+
+        <div>
+          <label htmlFor="key" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+            Key
+          </label>
+          <input
+            id="key"
+            type="text"
+            value={key}
+            onChange={(e) => setKey(e.target.value)}
+            className="w-full px-4 py-2.5 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all outline-none font-mono"
+            placeholder="e.g., GITHUB_TOKEN"
           />
         </div>
 
