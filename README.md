@@ -2,6 +2,12 @@
 
 A minimal, Apple-inspired local password manager for macOS. Store your secrets securely with AES-256 encryption.
 
+## Screenshots
+
+| Unlock Vault | Add Secret | Vault View |
+|:---:|:---:|:---:|
+| ![Unlock Vault](images/passlocal-app-1.png) | ![Add Secret](images/passlocal-app-2.png) | ![Vault View](images/passlocal-app-3.png) |
+
 ## Features
 
 - **Secure Storage**: Secrets encrypted with AES-256-GCM
