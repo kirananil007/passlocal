@@ -1,6 +1,6 @@
 cask "passlocal" do
-  version "1.0.0"
-  sha256 "3a44a09229c1d238346d249e99e4c952bb364293e0796b6eb7aa1705a29a1563"
+  version "1.1.0"
+  sha256 "b83997987f209f3fd12cae2e1663c732e9a2ddbd5e558535f2f4077e8e981d30"
 
   url "https://github.com/kirananil007/homebrew-passlocal/releases/download/v#{version}/PassLocal_#{version}_aarch64.dmg"
 
