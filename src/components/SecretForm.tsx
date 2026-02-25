@@ -5,7 +5,7 @@ import type { Secret, Folder } from '../types';
 interface SecretFormProps {
   isOpen: boolean;
   onClose: () => void;
-  onSubmit: (name: string, key: string, value: string, folderId: string) => Promise<void>;
+  onSubmit: (name: string, key: string, value: string, notes: string, folderId: string) => Promise<void>;
   folders: Folder[];
   currentFolderId: string;
   secret?: Secret | null;
@@ -22,6 +22,7 @@ export function SecretForm({
   const [name, setName] = useState('');
   const [key, setKey] = useState('');
   const [value, setValue] = useState('');
+  const [notes, setNotes] = useState('');
   const [folderId, setFolderId] = useState(currentFolderId);
   const [showValue, setShowValue] = useState(false);
   const [error, setError] = useState('');
@@ -35,11 +36,13 @@ export function SecretForm({
         setName(secret.name);
         setKey(secret.key || '');
         setValue(secret.value);
+        setNotes(secret.notes || '');
         setFolderId(secret.folder_id);
       } else {
         setName('');
         setKey('');
         setValue('');
+        setNotes('');
         setFolderId(currentFolderId);
       }
       setShowValue(false);
@@ -63,7 +66,7 @@ export function SecretForm({
 
     setLoading(true);
     try {
-      await onSubmit(name.trim(), key.trim(), value, folderId);
+      await onSubmit(name.trim(), key.trim(), value, notes, folderId);
       onClose();
     } catch (err: unknown) {
       const error = err as { message?: string };
@@ -139,6 +142,20 @@ export function SecretForm({
               )}
             </button>
           </div>
+        </div>
+
+        <div>
+          <label htmlFor="notes" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+            Notes
+          </label>
+          <textarea
+            id="notes"
+            value={notes}
+            onChange={(e) => setNotes(e.target.value)}
+            className="w-full px-4 py-2.5 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all outline-none resize-none"
+            placeholder="Add any notes or details about this secret"
+            rows={3}
+          />
         </div>
 
         <div>

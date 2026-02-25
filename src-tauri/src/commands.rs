@@ -215,6 +215,7 @@ pub fn add_secret(
     name: String,
     key: String,
     value: String,
+    notes: String,
     folder_id: String,
     state: tauri::State<AppState>,
 ) -> Result<Secret, CommandError> {
@@ -236,6 +237,7 @@ pub fn add_secret(
         name,
         key,
         value,
+        notes,
         folder_id,
         created_at: now,
         updated_at: now,
@@ -260,6 +262,7 @@ pub fn update_secret(
     name: String,
     key: String,
     value: String,
+    notes: String,
     folder_id: String,
     state: tauri::State<AppState>,
 ) -> Result<Secret, CommandError> {
@@ -279,6 +282,7 @@ pub fn update_secret(
     secret.name = name;
     secret.key = key;
     secret.value = value;
+    secret.notes = notes;
     secret.folder_id = folder_id;
     secret.updated_at = Utc::now();
     let updated_secret = secret.clone();

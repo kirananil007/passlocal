@@ -3,6 +3,7 @@ export interface Secret {
   name: string;
   key: string;
   value: string;
+  notes: string;
   folder_id: string;
   created_at: string;
   updated_at: string;

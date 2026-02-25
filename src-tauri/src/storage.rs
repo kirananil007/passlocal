@@ -30,6 +30,8 @@ pub struct Secret {
     #[serde(default)]
     pub key: String,
     pub value: String,
+    #[serde(default)]
+    pub notes: String,
     pub folder_id: String,
     pub created_at: DateTime<Utc>,
     pub updated_at: DateTime<Utc>,

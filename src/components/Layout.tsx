@@ -41,15 +41,15 @@ export function Layout({ vault, onVaultUpdate, onLock }: LayoutProps) {
     setSecretFormOpen(true);
   };
 
-  const handleSecretSubmit = async (name: string, key: string, value: string, folderId: string) => {
+  const handleSecretSubmit = async (name: string, key: string, value: string, notes: string, folderId: string) => {
     if (editingSecret) {
-      const updated = await api.updateSecret(editingSecret.id, name, key, value, folderId);
+      const updated = await api.updateSecret(editingSecret.id, name, key, value, notes, folderId);
       onVaultUpdate({
         ...vault,
         secrets: vault.secrets.map((s) => (s.id === updated.id ? updated : s)),
       });
     } else {
-      const newSecret = await api.addSecret(name, key, value, folderId);
+      const newSecret = await api.addSecret(name, key, value, notes, folderId);
       onVaultUpdate({
         ...vault,
         secrets: [...vault.secrets, newSecret],
